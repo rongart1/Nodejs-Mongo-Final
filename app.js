@@ -11,20 +11,19 @@ const app = express();
 
 app.use(express.json());
 
-app.use(express.static(path.join(__dirname, "public")));
+routesInit(app);
 
 app.use("/", swaggerUI.serve, swaggerUI.setup({
-  openapi: "3.0.0",
-  info: {
-    title: "Toy and User API",
-    version: "1.0.0",
-    description: "API documentation for managing toys and users",
-  },
-  paths: swaggerDocs.paths,
-  components: swaggerDocs.components,
-}));
-
-routesInit(app);
+    openapi: "3.0.0",
+    info: {
+      title: "Toy and User API",
+      version: "1.0.0",
+      description: "API documentation for managing toys and users",
+    },
+    paths: swaggerDocs.paths,
+    components: swaggerDocs.components,
+  }));
+  
 
 const server = http.createServer(app);
 const port = process.env.PORT || 3001;
