@@ -13,7 +13,7 @@ app.use(express.json());
 
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/api-docs", swaggerUI.serve, swaggerUI.setup({
+app.use("/", swaggerUI.serve, swaggerUI.setup({
   openapi: "3.0.0",
   info: {
     title: "Toy and User API",
